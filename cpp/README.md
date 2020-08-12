@@ -28,7 +28,7 @@ cin >> value;
 ```
 
 
-## クラス
+## [クラス](https://github.com/imamura-slab/Hoge/tree/master/cpp/class)
 ### 基本形
 ```
 class [tag [: base-list]]{

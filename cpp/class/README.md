@@ -1,6 +1,6 @@
 # クラス
 
-## 基本例
+## 基本例 ([class_Hoge.cpp](https://github.com/imamura-slab/Hoge/tree/master/cpp/class/src/class_Hoge.cpp))
 ```
 class Hoge{
 private:                        // 外部からのアクセス不可
@@ -25,7 +25,7 @@ int main(){
 >>> Hello World
 ```
 
-- クラス内でプロトタイプ宣言だけ行い, クラスの外部で関数定義を行うこともできる
+- クラス内でプロトタイプ宣言だけ行い, クラスの外部で関数定義を行うこともできる. ([class_Hoge2.cpp](https://github.com/imamura-slab/Hoge/tree/master/cpp/class/src/class_Hoge2.cpp))
 ```
 class Hoge{
 public:  
@@ -40,7 +40,7 @@ void Hoge::print(){
 
 
 ## コンストラクタ
-- コンストラクタ内で`str`を初期化しているので, main内の`hoge.str = "..."`が不要に
+- コンストラクタ内で`str`を初期化しているので, main内の`hoge.str = "..."`が不要に. ([class_Hoge3.cpp](https://github.com/imamura-slab/Hoge/tree/master/cpp/class/src/class_Hoge3.cpp))
 ```
 class Hoge{
 public:
