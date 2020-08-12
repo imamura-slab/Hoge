@@ -27,6 +27,6 @@ void Hoge::print(){
 int main(){
   Hoge hoge;
   hoge.print();
-
+  
   return 0;
 }
