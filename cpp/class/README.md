@@ -1,6 +1,7 @@
 # クラス
 
-## 基本例 ([class_Hoge.cpp](https://github.com/imamura-slab/Hoge/tree/master/cpp/class/src/class_Hoge.cpp))
+## 基本例
+([class_Hoge.cpp](https://github.com/imamura-slab/Hoge/tree/master/cpp/class/src/class_Hoge.cpp))
 ```
 class Hoge{
 private:                        // 外部からのアクセス不可
@@ -17,7 +18,6 @@ int main(){
    Hoge hoge;
    hoge.str = "Hello World";
    hoge.print();
-
    return 0;
 }
 
@@ -30,12 +30,12 @@ int main(){
 class Hoge{
 public:  
     const char *str;
-    void print()          // メンバ関数(メソッド)
+    void print()          // プロトタイプ宣言
 };
 
-void Hoge::print(){
-    cout << str;
-}
+void Hoge::print(){       // 関数定義 {
+    cout << str;          //
+}                         // 関数定義 }
 ```
 
 
@@ -46,8 +46,8 @@ class Hoge{
 public:
   const char *str;
   Hoge(){                             // コンストラクタ {
-    cout << "initialization!! \n\n";
-    str = "Hello World";       
+    cout << "initialization!! \n\n";  //
+    str = "Hello World";              //
   }                                   // コンストラクタ }
   void print();
 };
@@ -58,6 +58,7 @@ void Hoge::print(){
 
 int main(){
   Hoge hoge;
+                       // hoge.str = "Hello World"; 不要
   hoge.print();
   return 0;
 }
