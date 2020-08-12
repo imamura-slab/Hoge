@@ -1,4 +1,6 @@
 # C++ の勉強
+- 参考サイト
+  - [C++入門](http://wisdom.sakura.ne.jp/programming/cpp/)
 
 ## ヘッダ
 ```
