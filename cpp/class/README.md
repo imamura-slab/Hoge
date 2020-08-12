@@ -1,7 +1,7 @@
 # クラス
 
 ## 基本例
-([class_Hoge.cpp](https://github.com/imamura-slab/Hoge/tree/master/cpp/class/src/class_Hoge.cpp))
+- ([class_Hoge.cpp](https://github.com/imamura-slab/Hoge/tree/master/cpp/class/src/class_Hoge.cpp))
 ```
 class Hoge{
 private:                        // 外部からのアクセス不可
@@ -64,4 +64,26 @@ int main(){
 }
 ```
 
+- コンストラクタは引数を受け取ることもできる. ([class_Hoge3.cpp](https://github.com/imamura-slab/Hoge/tree/master/cpp/class/src/class_Hoge3.cpp))
+```
+class Hoge{
+public:
+  const char *str;
+  Hoge(const char *a){    // 引数を受け取って
+    cout << a << "\n\n";  // 表示する
+    str = "Hello World";  
+  }
+  void print();
+};
+
+void Hoge::print(){
+  cout << str;
+}
+
+int main(){
+  Hoge hoge("Hi!");      // 引数を与える
+  hoge.print();
+  return 0;
+}
+```
 
