@@ -87,3 +87,37 @@ int main(){
 }
 ```
 
+## デストラクタ
+- ([class_Hoge5.cpp](https://github.com/imamura-slab/Hoge/tree/master/cpp/class/src/class_Hoge5.cpp))
+```
+class Hoge{
+public:
+  const char *str;
+
+  Hoge(){
+    cout << "constructor \n";
+    str = "Hello World! \n";  
+  }
+
+  ~Hoge(){                      // デストラクタ {
+    cout << "destructor \n";	// 
+  }				// デストラクタ }
+  
+  void print();
+};
+
+void Hoge::print(){
+  cout << str;
+}
+
+int main(){
+  Hoge hoge;
+  hoge.print();
+  return 0;
+}
+
+
+>>> constructor
+>>> Hello World!
+>>> destructor
+```
