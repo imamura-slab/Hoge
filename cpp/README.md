@@ -18,7 +18,6 @@ using namespace std;
 cout << "hoge \n";
 cout << 2020 << "/" << 8 << "/" << 12 << "\n" ;
 
-
 >>> hoge
 >>> 2020/8/12
 ```
@@ -28,6 +27,8 @@ cout << 2020 << "/" << 8 << "/" << 12 << "\n" ;
 ```
 cin >> value;
 ```
+
+
 
 
 ## [クラス](https://github.com/imamura-slab/Hoge/tree/master/cpp/class)
@@ -72,7 +73,7 @@ class class-name{
 }
 ```
 
-## [スコープ]()
+## [スコープ](https://github.com/imamura-slab/Hoge/tree/master/cpp/scope)
 - クラスのメンバ関数内のローカル変数名とメンバ変数名が同じであるとき, ローカル変数の方が優先される.
   メンバ変数を明示したいときはスコープ解決演算子`::`を使用して, `クラス名::メンバ変数名`とする
 - さらに, グローバル変数を明示したいときは`::グローバル変数名`とする
