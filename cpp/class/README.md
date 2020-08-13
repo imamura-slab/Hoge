@@ -69,39 +69,11 @@ int main(){
 class Hoge{
 public:
   const char *str;
-  Hoge(const char *a){    // 引数を受け取って
-    cout << a << "\n\n";  // 表示する
-    str = "Hello World";  
+
+  Hoge(const char *a){         // 引数 a を受け取る
+    cout << a << "\n";         // 表示
+    str = "By ドラえもん\n";  
   }
-  void print();
-};
-
-void Hoge::print(){
-  cout << str;
-}
-
-int main(){
-  Hoge hoge("Hi!");      // 引数を与える
-  hoge.print();
-  return 0;
-}
-```
-
-## デストラクタ
-- ([class_Hoge5.cpp](https://github.com/imamura-slab/Hoge/tree/master/cpp/class/src/class_Hoge5.cpp))
-```
-class Hoge{
-public:
-  const char *str;
-
-  Hoge(){
-    cout << "constructor \n";
-    str = "Hello World! \n";  
-  }
-
-  ~Hoge(){                      // デストラクタ {
-    cout << "destructor \n";	// 
-  }				// デストラクタ }
   
   void print();
 };
@@ -111,13 +83,48 @@ void Hoge::print(){
 }
 
 int main(){
-  Hoge hoge;
+  const char *str = "人にできて、きみだけにできないなんてことあるもんか。";
+  Hoge hoge(str);     // 引数を与える
+  hoge.print();
+  
+  return 0;
+}
+
+>>> 人にできて、きみだけにできないなんてことあるもんか。
+>>> By ドラえもん
+```
+
+## デストラクタ
+- ([class_Hoge5.cpp](https://github.com/imamura-slab/Hoge/tree/master/cpp/class/src/class_Hoge5.cpp))
+```
+class Hoge{
+public:
+  const char *str;
+
+  Hoge(const char *a){
+    cout << a;
+    str = "いいかい! もっとも「むずかしい事」は! \n";  
+  }
+
+  ~Hoge(){                               // デストラクタ {
+    cout << "自分を乗り越える事さ! \n";	 // 
+  }				         // デストラクタ }
+  
+  void print();
+};
+
+void Hoge::print(){
+  cout << str;
+}
+
+int main(){
+  Hoge hoge("もっとも「むずかしい事」は!\n");
   hoge.print();
   return 0;
 }
 
 
->>> constructor
->>> Hello World!
->>> destructor
+>>> もっとも「むずかしい事」は!
+>>> いいかい! もっとも「むずかしい事」は!
+>>> 自分を乗り越える事さ!
 ```

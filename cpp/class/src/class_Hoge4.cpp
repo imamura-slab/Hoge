@@ -9,9 +9,9 @@ private:
 public:
   const char *str;
 
-  Hoge(const char *a){          // 引数 a を受け取る
-    cout << a << "\n\n";  // 表示
-    str = "Hello World";  
+  Hoge(const char *a){   // 引数 a を受け取る
+    cout << a << "\n";   // 表示
+    str = "By ドラえもん\n";  
   }
   
   void print();
@@ -25,7 +25,8 @@ void Hoge::print(){
 
 
 int main(){
-  Hoge hoge("Hi!");      // 引数を与える
+  const char *str = "人にできて、きみだけにできないなんてことあるもんか。";
+  Hoge hoge(str);     // 引数を与える
   hoge.print();
   
   return 0;

@@ -8,14 +8,14 @@ private:
 public:
   const char *str;
 
-  Hoge(){
-    cout << "constructor \n";
-    str = "Hello World! \n";  
+  Hoge(const char *a){
+    cout << a;
+    str = "いいかい! もっとも「むずかしい事」は! \n";  
   }
 
-  ~Hoge(){                      // デストラクタ {
-    cout << "destructor \n";	// 
-  }				// デストラクタ }
+  ~Hoge(){                               // デストラクタ {
+    cout << "自分を乗り越える事さ! \n";	 // 
+  }				         // デストラクタ }
   
   void print();
 };
@@ -26,7 +26,7 @@ void Hoge::print(){
 }
 
 int main(){
-  Hoge hoge;
+  Hoge hoge("もっとも「むずかしい事」は!\n");
   hoge.print();
   
   return 0;
