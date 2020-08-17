@@ -63,7 +63,7 @@ int main(){
 
 - クラスのメンバ関数として定義する．
 ```
-type operator operator-symbpl(parameter-list)
+type operator operator-symbol(parameter-list)
 ```
 
 - [overload3.cpp](./src/overload3.cpp)
@@ -79,7 +79,8 @@ private:
   const char *str;
   
 public:
-  Hoge() { cout << "だが断る" << endl; }         // デフォルトコンストラクタ
+  Hoge();                                        // デフォルトコンストラクタ
+  Hoge() { cout << "だが断る" << endl; }         // ユーザ定義のコンストラクタ
   Hoge(const char *str) { cout << str << endl; } // コンストラクタのオーバーロード
 
   /* 演算子 + のオーバーロード */
