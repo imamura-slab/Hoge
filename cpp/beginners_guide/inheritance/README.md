@@ -6,10 +6,124 @@ class 派生クラス名 : [アクセス指定子] 基本(基底)クラス名 {
       member;
 };
 ```
+- アクセス指定子は基底クラスの`publicなメンバ`をどのように継承するかを決定する. 指定しなかった場合は`private`になる.
+  | アクセス指定子 | 派生クラスからのアクセス | オブジェクトを用いた外部(例えばmain関数)からのアクセス |
+  |:---:|:---:|:---:|
+  |public     |可|  可|
+  |protected  |可|不可|  
+  |private    |可|不可|
+
+- 被保護 : publicとprivateの中間的なアクセス指定子`protected`
+  - protectedで指定されたメンバは被保護メンバと呼ばれる
+  - 派生クラスからもアクセスできる非公開メンバ
+  |アクセス指定子|派生クラスからのアクセス|外部からのアクセス|
+  |:---:|:---:|:---:|
+  |public   |可  |継承時のアクセス指定子次第|
+  |protected|可  |不可|
+  |private  |不可|不可|	    
+
+- 継承時のコンストラクタ
+  - コンストラクタは, 基底クラス, 派生クラスの順番で実行される
+  - 基底クラスのコンストラクタに引数を渡す場合は次のようにする
+  ```
+  派生クラス名(arg-list) : 基底クラス名(arg-list){
+    処理...
+  }
+  ```
+
+- 継承時のデストラクタ
+  - 派生クラスのオブジェクトが破棄されると, デストラクタはコンストラクタとは逆順である, 派生クラス, 基底クラスの順に実行される
 
 
 ***
+- 継承を使用し, さらに基底クラスでコンストラクタ初期化を行った例
+- [inheritance1.cpp](./src/inheritance1.cpp)
+  - 基底クラス : Pokemon
+    - メソッド : print_data()
+  - 派生クラス : Pikachu, Togepi
+    - メソッド : cry()
+```
+#include <iostream>
+#include <string>     // 文字列比較用(compare())
+using namespace std;
+
+class Pokemon{                              // 今回, 基底クラスとして扱う
+public:
+  const char *name;
+  int lebel;
+  const char *type1, *type2;
+
+  Pokemon(const char *name="Pikachu",      // 基底クラスコンストラクタ {
+	  const char *type1="Electric",    //
+	  const char *type2="",		   //
+	  int lebel=1){			   //
+    this->name  = name;			   //
+    this->lebel = lebel;		   //
+    this->type1 = type1;		   //
+    this->type2 = type2;		   //
+  }					   // 基底クラスコンストラクタ }
+  
+  void print_data(){
+    cout << "\n";
+    cout << "name  : " << name  << "\n";
+    cout << "lebel : " << lebel << "\n";
+    cout << "type1 : " << type1 << "\n";
+    cout << "type2 : " << type2 << "\n";
+  }
+};
 
 
+class Pikachu : public Pokemon{                               // Pokemonクラスを継承
+public:
+  Pikachu(const char *name="Pikachu",                         // 派生クラスコンストラクタ {
+	  const char *type1="Electric",			      // 
+	  const char *type2="",				      // 
+	  int lebel=1) : Pokemon(name, type1, type2, lebel){} // 派生クラスコンストラクタ }
+
+  void cry(){
+    cout << "\nピカー！\n";
+  }
+};
 
 
+class Togepi : public Pokemon{
+public:
+  Togepi(const char *name="Pikachu",                          // 派生クラスコンストラクタ {
+	 const char *type1="Electric",			      // 
+	 const char *type2="",				      // 
+	 int lebel=1) : Pokemon(name, type1, type2, lebel){}  // 派生クラスコンストラクタ }
+
+  void cry(){
+    cout << "\nチョッゲプリィイイイイイイ！！\n";
+  }
+};
+
+  
+int main(){
+  Pikachu p_obj;                    // 派生クラスでインスタンス化
+  Togepi  t_obj("Togepi", "Fairy"); // 派生クラスでインスタンス化
+  
+  p_obj.print_data();               // 基底クラスのメソッド使えるよ
+  p_obj.cry();                      // もちろん派生クラスのメソッドも使えるよ
+
+  t_obj.print_data();
+  t_obj.cry();
+  
+  return 0;
+}
+
+
+>>> name  : Pikachu
+>>> lebel : 1
+>>> type1 : Electric
+>>> type2 : 
+>>> 
+>>> ピカー！
+>>> 
+>>> name  : Togepi
+>>> lebel : 1
+>>> type1 : Fairy
+>>> type2 : 
+>>> 
+>>> チョッゲプリィイイイイイイ！！
+```
