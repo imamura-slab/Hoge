@@ -1,4 +1,6 @@
 # オーバーロード
+
+## 関数のオーバーロード
 - `引数の数`あるいは`データ型`が異なる場合は関数名が同じ関数を多重定義できる. (戻り値が違うだけでは不十分)
 - [overload1.cpp](./src/overload1.cpp)
 ```
@@ -50,5 +52,55 @@ int main(){
 >>> でも断る
 ```
 
+## 演算子のオーバーロード
+- 関数だけでなく*演算子*も多重定義することができる．
+  - オーバーロード可能な演算子
+    - 算術演算子（`+`, `-`, `*`, `/`, `%`, ...）
+    - 比較演算子（`<`, `>`, `<=`, `>=`, `==`, `!=`, ...）
+    - 論理演算子（`!`, `&&`, `||`）
+    - ビット演算子（`~`, `&`, `|`, `^`, ...）
+    - e.t.c.（`=`, `[]`, `()`, `new`, `delete`, ...）
 
+- クラスのメンバ関数として定義する．
+```
+type operator operator-symbol(parameter-list)
+```
 
+- [overload3.cpp](./src/overload3.cpp)
+
+```c++
+#include <iostream>
+
+using namespace std;
+
+class Hoge
+{
+private:
+  const char *str;
+  
+public:
+  Hoge();                                        // デフォルトコンストラクタ
+  Hoge() { cout << "だが断る" << endl; }         // ユーザ定義のコンストラクタ
+  Hoge(const char *str) { cout << str << endl; } // コンストラクタのオーバーロード
+
+  /* 演算子 + のオーバーロード */
+  char* operator+(Hoge rhs)
+  {
+    return "ナニッ！？"; // 引数使え警告でるけど無視
+  } 
+};
+
+int main(void)
+{
+  Hoge hoge1;
+  Hoge hoge2("でも断る");
+  cout << hoge1 + hoge2 << endl; // Hogeクラス + Hogeクラス
+  return 0;
+}
+```
+
+```
+>>> だが断る
+>>> でも断る
+>>> ナニッ！？
+```
