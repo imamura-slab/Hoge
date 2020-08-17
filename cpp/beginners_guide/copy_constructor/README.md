@@ -4,6 +4,8 @@
 ```
 class-name(const class-type &obj)
 ```
+
+***
 - ただしコピーコンストラクタは`代入では作用しない`.
 - [copy_constructor1.cpp](./src/copy_constructor1.cpp)
 ```
@@ -43,6 +45,7 @@ int main(){
 
 
 
+***
 - コピーコンストラクタは, 関数にオブジェクトを値渡しするとき, 関数から呼び出し元にオブジェクトを値渡しするときにも呼び出される
 - [copy_constructor2.cpp](./src/copy_constructor2.cpp)
 ```
