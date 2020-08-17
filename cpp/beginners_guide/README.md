@@ -138,7 +138,7 @@ inline type function();
   - `std::cout << std::endl`の演算子`<<`なんかも本来はビットシフトだけどオーバーロードを使うことでストリーム演算子として定義している
 - クラスのメンバ関数として定義する
   ```
-  type operator operator-symbpl(parameter-list)
+  type operator operator-symbol(parameter-list)
   ```
 
 
