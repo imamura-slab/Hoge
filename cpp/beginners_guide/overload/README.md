@@ -53,18 +53,19 @@ int main(){
 ```
 
 ## 演算子のオーバーロード
-- 関数だけでなく*演算子*も多重定義することができる．
+- 関数だけでなく**演算子**も多重定義することができる．
   - オーバーロード可能な演算子
     - 算術演算子（`+`, `-`, `*`, `/`, `%`, ...）
     - 比較演算子（`<`, `>`, `<=`, `>=`, `==`, `!=`, ...）
     - 論理演算子（`!`, `&&`, `||`）
     - ビット演算子（`~`, `&`, `|`, `^`, ...）
     - e.t.c.（`=`, `[]`, `()`, `new`, `delete`, ...）
-
-- クラスのメンバ関数として定義する．
-```
-type operator operator-symbol(parameter-list)
-```
+    - **オーバーロードできない演算子もあることに注意**（`::`, `?:`, ...）
+      - [参考](https://programming-place.net/ppp/contents/cpp/language/019.html#cant_overload_op)
+  - クラスのメンバ関数として定義する．
+  ```
+  type operator operator-symbol(parameter-list)
+  ```
 
 - [overload3.cpp](./src/overload3.cpp)
 
@@ -79,7 +80,6 @@ private:
   const char *str;
   
 public:
-  Hoge();                                        // デフォルトコンストラクタ
   Hoge() { cout << "だが断る" << endl; }         // ユーザ定義のコンストラクタ
   Hoge(const char *str) { cout << str << endl; } // コンストラクタのオーバーロード
 

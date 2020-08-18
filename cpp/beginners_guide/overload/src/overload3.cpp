@@ -8,7 +8,6 @@ private:
   const char *str;
   
 public:
-  Hoge();                                        // デフォルトコンストラクタ
   Hoge() { cout << "だが断る" << endl; }         // ユーザ定義のコンストラクタ
   Hoge(const char *str) { cout << str << endl; } // コンストラクタのオーバーロード
 
