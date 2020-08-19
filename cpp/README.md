@@ -5,4 +5,4 @@
 ***
 # [beginner's guide to C++](./beginners_guide)
 
-# 
+# [標準C++ライブラリ](./libstdc++)
