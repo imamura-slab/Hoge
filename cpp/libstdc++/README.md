@@ -17,7 +17,7 @@
 ## 具体的に何があって何ができるの？
 
 大まかに次のような機能があるよ．
-- コンテナ
+- [コンテナ](container)
   - キューやスタックなどのデータ構造を扱える
 - 一般
   - アルゴリズムや時間計測など
@@ -33,9 +33,10 @@
 - 診断
   - 標準的な例外クラスを提供する
 - スレッド
-  - [並列プログラミング](https://www.amazon.co.jp/C-Concurrency-Action-Anthony-Williams/dp/1617294691/ref=pd_lpo_14_img_0/356-7730930-7616940?_encoding=UTF8&pd_rd_i=1617294691&pd_rd_r=bbc242e4-1cfb-400a-aa88-843f9fd21964&pd_rd_w=cbbVO&pd_rd_wg=XCZQ2&pf_rd_p=4b55d259-ebf0-4306-905a-7762d1b93740&pf_rd_r=SGEBBPWRY29TA3GT862N&psc=1&refRID=SGEBBPWRY29TA3GT862N)ができるよ
+  - 並列プログラミングができるよ
+  - [聖書](https://www.amazon.co.jp/C-Concurrency-Action-Anthony-Williams/dp/1617294691/ref=pd_lpo_14_img_0/356-7730930-7616940?_encoding=UTF8&pd_rd_i=1617294691&pd_rd_r=bbc242e4-1cfb-400a-aa88-843f9fd21964&pd_rd_w=cbbVO&pd_rd_wg=XCZQ2&pf_rd_p=4b55d259-ebf0-4306-905a-7762d1b93740&pf_rd_r=SGEBBPWRY29TA3GT862N&psc=1&refRID=SGEBBPWRY29TA3GT862N)
 - 標準Cライブラリ
-  - ~~前世である~~Cの標準機能が使える
+  - ~~前世である~~Cの標準機能が使えるよ
 
 ## 参考
 - [C++日本語リファレンス](https://cpprefjp.github.io/reference.html)
