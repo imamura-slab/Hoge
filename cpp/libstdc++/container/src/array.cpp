@@ -3,7 +3,7 @@
 
 int main(void)
 {
-  /* 1次元配列 */
+  /* 1次元固定長配列 */
   std::array<int, 4> a{1, 2, 3, 4};
   // std::array<int, 4> a{1, 2, 3, 4, 5}; // 初期化要素数によるエラー
   std::cout << "array size: " << a.size() << std::endl;
@@ -25,9 +25,9 @@ int main(void)
   std::array<int, 0> e; // 空の配列
   std::cout << "array e is empty: " << std::boolalpha << e.empty() << std::endl;
 
-  /* 2次元配列 */
+  /* 2次元固定長配列 */
   std::array<std::array<double, 2>, 3> b;
-  std::cout << "array size: " << b[0].size() << "x" << b.size() << std::endl;
+  std::cout << "array size: " << b.size() << "x" << b[0].size() << std::endl;
   for (int i = 0; i < b.size(); i++) {
     b[i].fill(3.14); // すべての要素を 3.14 埋め
     for (int j = 0; j < b[i].size(); j++) {
