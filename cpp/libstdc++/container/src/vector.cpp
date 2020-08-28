@@ -30,9 +30,9 @@ int main(void)
   
   /* 2次元の可変長配列 */
   std::vector<std::vector<int> > vv(5, std::vector<int>(7, 9)); // 5x7の2次元配列
-                                                                // を5で初期化
+                                                                // を9で初期化
   // std::vector<std::vector<float>> vv(); 
-  //                              ~~ コンパイラのバージョンによってはエラー
+  //                              ~~ コンパイラのバージョンによってはここでエラー
   for (std::vector<int> ve : vv) {
     for (int e : ve) {
       std::cout << e << " ";
