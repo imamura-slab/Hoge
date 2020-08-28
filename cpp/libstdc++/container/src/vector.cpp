@@ -5,11 +5,11 @@
 int main(void)
 {
   /* int 型の可変長配列 */
-  std::vector<int> v = {0, 1, 2};
+  std::vector<int> v = {2, 3, 5};
 
-  v.push_back(3); // のびる
-  v.push_back(4); // のびる
-  v.push_back(5); // どこまでも
+  v.push_back(7);  // のびる
+  v.push_back(11); // のびる
+  v.push_back(13); // どこまでも
   for (int i = 0; i < v.size(); i++) { // .size()でサイズ取得
     std::cout << v.at(i) << " "; // .at()メソッド／[]演算子で参照
   }
