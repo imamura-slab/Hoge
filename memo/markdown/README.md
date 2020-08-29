@@ -1,6 +1,6 @@
 # github Markdown
 
-#### 折りたたみ
+### 折りたたみ
 <details>
   <summary>折りたたみ</summary>
 
@@ -15,14 +15,15 @@
 </details>
 
 
-#### シンタックスハイライト
+***
+### シンタックスハイライト
 ```
 	```言語名
 	コード
 	```
 ```
 <details>
-  <summary>例</summary>
+  <summary>適用例(cpp)</summary>
 
   ```cpp
   #include <iostream>
