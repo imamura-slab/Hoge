@@ -76,6 +76,9 @@
 - `<map>`ヘッダをインクルード
 - 宣言
   `std::map<keyの型, valueの型> map;`
+- 参照
+  - `.first`: key, `.second`: value
+  - `std::pair`みたいなやつ（後述）
 - プログラム例
    - [ソースコード](src/map.cpp)
    - 出力
