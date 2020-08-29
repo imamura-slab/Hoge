@@ -56,15 +56,14 @@ private:
 ***
 - 継承を使用し, さらに基底クラスでコンストラクタ初期化を行った例を示す (ついでにデフォルト引数も使ってみてます)
 
-<details>
-[<summary>inheritance1.cpp</summary>](./src/inheritance1.cpp)
 
-- 基底クラス : Pokemon
-  - メソッド : print_data()
-- 派生クラス : Pikachu, Togepi
-  - メソッド : cry()
+- inheritance1.cpp](./src/inheritance1.cpp)
+  - 基底クラス : Pokemon
+    - メソッド : print_data()
+  - 派生クラス : Pikachu, Togepi
+    - メソッド : cry()
 
-```
+```cpp
 #include <iostream>
 #include <string>     // 文字列比較用(compare())
 using namespace std;
@@ -150,7 +149,7 @@ int main(){
 >>> チョッゲプリィイイイイイイ！！
 ```
 
-</details>
+
 
 
 # 多段階継承
