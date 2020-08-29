@@ -63,7 +63,7 @@ private:
   - メソッド : print_data()
 - 派生クラス : Pikachu, Togepi
   - メソッド : cry()
-</details>
+
 ```
 #include <iostream>
 #include <string>     // 文字列比較用(compare())
@@ -150,6 +150,7 @@ int main(){
 >>> チョッゲプリィイイイイイイ！！
 ```
 
+</details>
 
 
 # 多段階継承
