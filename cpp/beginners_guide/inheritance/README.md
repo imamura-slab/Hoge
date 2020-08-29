@@ -180,3 +180,110 @@ class 派生クラス名 : [アクセス指定子] 基底クラス名1, [アク�
 - デストラクタは最初に派生クラスが実行され, その後右の基底クラスから順に実行される
 
 
+
+## 多重継承の問題点
+- 同じクラスを複数回継承してしまうことがある
+```
+	      基底クラス1
+	        |     |
+	派生クラス1 派生クラス2
+	        |     |
+	      派生クラス3
+```
+- 次のプログラム例は基底クラス(Base)を2度継承しており, obj.nameが曖昧になる. そのためコンパイルが通らない.
+- [inheritance2.cpp](./src/inheritance2.cpp)
+```
+#include <iostream>
+using namespace std;
+
+class Base{
+public:
+  const char* name;
+};
+
+class Derived1 : public Base{
+public:
+  int age;
+};
+
+class Derived2 : public Base{
+public:
+  const char* sex;
+};
+
+class Derived3 : public Derived1, public Derived2{
+public:
+  void print(){
+    cout << "name: " << name << endl;
+    cout << " age: " << age  << endl;
+    cout << " sex: " << sex  << endl;
+  }
+};
+
+
+int main(){
+  Derived3 obj;
+
+  obj.name = "野原しんのすけ";
+  obj.age  = 5;
+  obj.sex  = "male";
+  obj.print();
+
+  return 0;
+}
+
+>>> コンパイルエラー
+```
+
+- *仮想基底クラス* を用いることで上記の問題を解決できる
+- やりかたはとても簡単!! 継承時に`virtual`を付けるだけ!!
+  - `virtual アクセス指定子 基底クラス名` の順でも良いし,
+    `アクセス指定子 virtual 基底クラス名` の順でも良い
+- [inheritance3.cpp](./src/inheritance3.cpp)
+```
+#include <iostream>
+using namespace std;
+
+class Base{
+public:
+  const char* name;
+};
+
+class Derived1 : virtual public Base{   // 変更点: virtual追加
+public:
+  int age;
+};
+
+class Derived2 : virtual public Base{   // 変更点: virtual追加
+public:
+  const char* sex;
+};
+
+class Derived3 : public Derived1, public Derived2{
+public:
+  void print(){
+    cout << "name: " << name << endl;
+    cout << " age: " << age  << endl;
+    cout << " sex: " << sex  << endl;
+  }
+};
+
+
+int main(){
+  Derived3 obj;
+
+  obj.name = "野原しんのすけ";
+  obj.age  = 5;
+  obj.sex  = "male";
+  obj.print();
+
+  return 0;
+}
+
+
+>>> name: 野原しんのすけ
+>>>  age: 5
+>>>  sex: male
+```
+
+
