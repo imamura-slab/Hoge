@@ -55,11 +55,15 @@ private:
 
 ***
 - 継承を使用し, さらに基底クラスでコンストラクタ初期化を行った例を示す (ついでにデフォルト引数も使ってみてます)
-- [inheritance1.cpp](./src/inheritance1.cpp)
-  - 基底クラス : Pokemon
-    - メソッド : print_data()
-  - 派生クラス : Pikachu, Togepi
-    - メソッド : cry()
+
+<details>
+<summary>[inheritance1.cpp](./src/inheritance1.cpp)</summary>
+
+- 基底クラス : Pokemon
+  - メソッド : print_data()
+- 派生クラス : Pikachu, Togepi
+  - メソッド : cry()
+</details>
 ```
 #include <iostream>
 #include <string>     // 文字列比較用(compare())
@@ -235,7 +239,7 @@ int main(){
 >>> コンパイルエラー
 ```
 
-- *仮想基底クラス* を用いることで上記の問題を解決できる
+- **仮想基底クラス** を用いることで上記の問題を解決できる
 - やりかたはとても簡単!! 継承時に`virtual`を付けるだけ!!
   - `virtual アクセス指定子 基底クラス名` の順でも良いし,
     `アクセス指定子 virtual 基底クラス名` の順でも良い
