@@ -29,15 +29,16 @@ int main() {
 
 ここで, クラスの中にfriend指示子を付けた関数宣言を書き, クラスの外にその定義を書くと, その関数(フレンド関数)を通して, クラスのprivateメンバにアクセスできる.
 
-- friend関数の宣言は, privateでもpublicでもよい.
-- friend関数の引数は, 1つ以上の(同クラスの)オブジェクト.
+- フレンド関数の宣言は, privateでもpublicでもよい.
+- フレンド関数の引数は, 1つ以上のクラスオブジェクト.
 
 ([friend_2.cpp](https://github.com/imamura-slab/Hoge/tree/master/cpp/friend/src/friend_2.cpp))
 ```c++
 class Monster {
   private:
     int hp;
-    friend int getHp(Monster &);    // friend関数の宣言(クラス内)
+    friend int getHp(Monster &);    // フレンド関数の宣言(クラス内)
+                                    // 仮引数の識別子(&の後)は書いても書かなくてもOK
 
   public:
     Monster(int hp) {
@@ -45,14 +46,14 @@ class Monster {
     }
 };
 
-int getHp(Monster &obj) {           // friend関数の定義(クラス外)
-  return obj.hp;                    // friend関数の中では, privateメンバにアクセスできる.
+int getHp(Monster &obj) {           // フレンド関数の定義(クラス外)
+  return obj.hp;                    // フレンド関数の中では, 渡されたクラスオブジェクトのprivateメンバにアクセスできる.
 }
 
 int main() {
   Monster m = Monster(50);
   
-  cout << getHp(m) << endl;         // friend関数に, hpメンバにアクセスしてもらう
+  cout << getHp(m) << endl;         // フレンド関数に, hpメンバにアクセスしてもらう
 
   return 0;
 }
@@ -61,12 +62,13 @@ int main() {
 >>> 50
 ```
 
-- あくまで, friend関数はクラスのメンバではない. 身内ではなく友達.
-- なので,
-  m.getHp()
+- あくまで, フレンド関数はクラスのメンバではない. 身内ではなく友達.
+- なので,  
+  m.getHp()  
   のように, クラスのメンバとして呼ぶことはできない.
 
-friend関数の宣言さえ書いておけば, そのクラスのprivateメンバに同一のフレンド関数からアクセスできる.
+フレンド関数の宣言さえ書いておけば, そのクラスのprivateメンバに同一のフレンド関数からアクセスできる.
+
 ([friend_3.cpp](https://github.com/imamura-slab/Hoge/tree/master/cpp/friend/src/friend_3.cpp))
 ```c++
 class Monster;
@@ -106,11 +108,12 @@ class NPC {
     }
 };
 
+// 1つのフレンド関数で異なるクラスのプライベートメンバに同時にアクセス可能
 void getName(Monster &obj_m, Player &obj_p, NPC &obj_n) {
   cout << "モンスター : " << obj_m.name << endl
     << "プレイヤー : " << obj_p.name << endl
     << "NPC : " << obj_n.name << endl;
-}  // 1つのフレンド関数で異なるクラスのプライベートメンバに同時にアクセス可能
+}  
 
 int main() {
   Monster m = Monster("ゴブリン");
@@ -130,9 +133,10 @@ int main() {
 ```
 
 ## フレンドクラス
-フレンド関数の進化版.
+フレンド関数の進化版
 - フレンドクラス内のメソッドはすべてフレンド関数扱いになる.
 - クラスAの定義内で, friendクラスを付けたクラスBを宣言しておくと, クラスBからは自由にクラスAのメンバにアクセスできる. なので, main関数などからは, クラスBのメソッドを使ってクラスAにアクセスできる.
+
 ([friend_4.cpp](https://github.com/imamura-slab/Hoge/tree/master/cpp/friend/src/friend_4.cpp))
 ```c++
 class Player {
@@ -176,6 +180,6 @@ int main() {
 
 ## 所感
 - あまり使いどころがわからない.
-- getterとかでよくね？
-- クラスの定義が長くなったからクラスの外に関数定義を書きたい
+- getterメソッドとかでよくね？
+- クラスの定義が長くなったからクラスの外に関数定義を書きたい.
   って時とかは有効なのかもしれない.

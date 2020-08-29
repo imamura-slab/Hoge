@@ -3,7 +3,7 @@
 
 using namespace std;
 
-class Monster;
+class Monster;    // 宣言しておかないと下の方でエラーになる
 class Player;
 class NPC;
 
@@ -40,12 +40,12 @@ class NPC {
     }
 };
 
+// 1つのフレンド関数で異なるクラスのプライベートメンバに同時にアクセス可能
 void getName(Monster &obj_m, Player &obj_p, NPC &obj_n) {
   cout << "モンスター : " << obj_m.name << endl
     << "プレイヤー : " << obj_p.name << endl
     << "NPC : " << obj_n.name << endl;
-}  // 1つのフレンド関数で異なるクラスのプライベートメンバに同時にアクセス可能
-
+}  
 
 int main() {
   Monster m = Monster("ゴブリン");

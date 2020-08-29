@@ -7,7 +7,7 @@ class Player {
   private:
     int hp;
     string name;
-    friend class NPC;
+    friend class NPC;             // NPCクラスは友達なので, 自分のプライベートにもアクセスを許すよ宣言
 
   public:
     Player(int hp, string name) {
@@ -17,6 +17,7 @@ class Player {
 };
 
 class NPC {
+  // NPCクラスがまるごとPlayerのfriendなので, その中のメソッドはすべてPlayerのfriendになる.
   public:
     int getHp(Player &obj) {
       return obj.hp;
