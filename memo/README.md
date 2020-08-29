@@ -5,11 +5,13 @@
 
 - github Markdown
 <details>
-  - <summary>折りたたみ</summary>
+  <summary>折りたたみ</summary>
+
   ```
   <details>
   <summary>折りたたみ</summary>
-  ここに空行を入れた方が良いかも
+
+  ↑空行を入れた方が良い
   内容内容内容内容内容
   </details>
   ```
