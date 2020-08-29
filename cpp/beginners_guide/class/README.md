@@ -2,7 +2,7 @@
 
 ## 基本例
 - ([class_Hoge.cpp](https://github.com/imamura-slab/Hoge/tree/master/cpp/class/src/class_Hoge.cpp))
-```
+```cpp
 class Hoge{
 private:                        // 外部からのアクセス不可
     int private_var;            // メンバ変数
@@ -26,7 +26,7 @@ int main(){
 ```
 
 - クラス内でプロトタイプ宣言だけ行い, クラスの外部で関数定義を行うこともできる. ([class_Hoge2.cpp](https://github.com/imamura-slab/Hoge/tree/master/cpp/class/src/class_Hoge2.cpp))
-```
+```cpp
 class Hoge{
 public:  
     const char *str;
@@ -41,7 +41,7 @@ void Hoge::print(){       // 関数定義 {
 
 ## コンストラクタ
 - コンストラクタ内で`str`を初期化しているので, main内の`hoge.str = "..."`が不要に. ([class_Hoge3.cpp](https://github.com/imamura-slab/Hoge/tree/master/cpp/class/src/class_Hoge3.cpp))
-```
+```cpp
 class Hoge{
 public:
   const char *str;
@@ -65,7 +65,7 @@ int main(){
 ```
 
 - コンストラクタは引数を受け取ることもできる. ([class_Hoge3.cpp](https://github.com/imamura-slab/Hoge/tree/master/cpp/class/src/class_Hoge3.cpp))
-```
+```cpp
 class Hoge{
 public:
   const char *str;
@@ -96,7 +96,7 @@ int main(){
 
 ## デストラクタ
 - ([class_Hoge5.cpp](https://github.com/imamura-slab/Hoge/tree/master/cpp/class/src/class_Hoge5.cpp))
-```
+```cpp
 class Hoge{
 public:
   const char *str;

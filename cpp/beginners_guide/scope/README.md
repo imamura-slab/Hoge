@@ -10,7 +10,7 @@
 
 ---
 - [scope1.cpp](./src/scope1.cpp)
-```
+```cpp
 #include <iostream>
 using namespace std;
 

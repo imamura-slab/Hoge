@@ -3,7 +3,7 @@
 ## 関数のオーバーロード
 - `引数の数`あるいは`データ型`が異なる場合は関数名が同じ関数を多重定義できる. (戻り値が違うだけでは不十分)
 - [overload1.cpp](./src/overload1.cpp)
-```
+```cpp
 #include <iostream>
 using namespace std;
 
@@ -29,7 +29,7 @@ int main(){
 
 - コンストラクタのオーバーロードも可能 (デストラクタは不可)
 - [overload2.cpp](./src/overload2.cpp)
-```
+```cpp
 #include <iostream>
 using namespace std;
 

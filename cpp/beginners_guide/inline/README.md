@@ -1,6 +1,6 @@
 # インライン関数
 - [inline1.cpp](./src/inline1.cpp)
-```
+```cpp
 #include <iostream>
 using namespace std;
 

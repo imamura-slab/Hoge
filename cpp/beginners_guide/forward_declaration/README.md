@@ -20,7 +20,7 @@ class B{
 
 
 - [forward_declaration1.cpp](./src/forward_declaration1.cpp)
-```
+```cpp
 #include <iostream>
 using namespace std;
 
