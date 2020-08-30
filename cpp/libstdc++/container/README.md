@@ -57,17 +57,17 @@
    - 出力
      ```
      $ g++ -std=c++11 vector.cpp && ./a.out
-     2 3 5 7 11 13 
-     poped 13 -> poped 11 -> poped 7 -> poped 5 -> poped 3 -> poped 2 -> empty!
+     2 3 5 7 11 13
+     pop 13 → pop 11 → pop 7 → pop 5 → pop 3 → pop 2 → empty!
      hoge
      huga
      piyo
-     9 9 9 9 9 9 9 
-     9 9 9 9 9 9 9 
-     9 9 9 9 9 9 9 
-     9 9 9 9 9 9 9 
-     9 9 9 9 9 9 9 
-     
+     9 9 9 9 9 9 9
+     9 9 9 9 9 9 9
+     9 9 9 9 9 9 9
+     9 9 9 9 9 9 9
+     9 9 9 9 9 9 9
+          
      $
      ```
 
