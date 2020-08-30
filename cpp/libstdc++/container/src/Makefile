@@ -1,7 +1,12 @@
-TARGET =
+TARGET = 
+ifeq ($(TARGET), map.cpp)
+	VERSION = c++17
+else
+	VERSION = c++11
+endif 
 
-default: $(TARGET)
-	g++ -std=c++11 $(TARGET) && ./a.out
+all: $(TARGET)
+	g++ -std=$(VERSION) $(TARGET) -g && ./a.out
 
 clean:
 	rm -rf *~ ./a.out

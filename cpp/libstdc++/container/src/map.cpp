@@ -33,14 +33,14 @@ int main(void)
   }
 
   /* おかいもの */
-  for (const auto& e : memo) {
-    std::cout << e.first << " を "         
-              << e.second << " 個買いました" 
+  for (const auto& [key, value] : memo) { // C++17 からの新しい構文
+    std::cout << key << " を "         
+              << value << " 個買いました" 
               << std::endl;
-    memo.erase(e.first); // 買ったものはメモから削除
+    // memo.erase(key); // 範囲 for 文中では .erase() は未定義動作みたい
   }
   std::cout << std::endl;
-  assert(memo.empty()); // ぜんぶ買ったハズ
+  // assert(memo.empty()); // ぜんぶ買ったハズ
   
   return 0;
 }
