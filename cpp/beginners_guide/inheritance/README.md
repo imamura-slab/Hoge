@@ -1,4 +1,4 @@
-table of contents
+### table of contents
 - [継承](#user-content-継承inheritance)
 - [多段階継承](#user-content-多段階継承)
 - [多重継承](#user-content-多重継承)

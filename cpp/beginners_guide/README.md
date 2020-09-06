@@ -166,7 +166,7 @@ class 派生クラス名 : [アクセス指定子] 基本(基底)クラス名 {
 ```
 
 
-## [継承とポインタ](./inheritance)
+## [継承とポインタ](./inheritance/#user-content-継承とポインタ)
 - クラス型のポインタ変数には`派生クラスのアドレスを代入`できる
 ```
 Derived-class-name derived_obj;
