@@ -151,7 +151,7 @@ int main(){
 
 
 
-
+***
 # 多段階継承
 - "ある基底クラスから派生したクラス"を基底クラスとして派生クラスを生成すること
 - 派生クラスの基底クラスが継承している基底クラスを`間接基底クラス`という
@@ -166,6 +166,8 @@ int main(){
 - デストラクタは 派生クラス -> 基底クラス -> 間接基底クラス の順に実行される(コンストラクタの逆順)
 
 
+
+***
 # 多重継承
 - 派生クラスが複数の基底クラスを継承すること
 ```
@@ -240,7 +242,7 @@ int main(){
 ```
 
 - **仮想基底クラス** を用いることで上記の問題を解決できる
-- やりかたはとても簡単!! 継承時に`virtual`を付けるだけ!!
+- やりかたはとても簡単.  継承時に`virtual`を付けるだけ!!
   - `virtual アクセス指定子 基底クラス名` の順でも良いし,
     `アクセス指定子 virtual 基底クラス名` の順でも良い
 - [inheritance3.cpp](./src/inheritance3.cpp)
@@ -289,5 +291,100 @@ int main(){
 >>>  age: 5
 >>>  sex: male
 ```
+
+
+
+***
+# 継承とポインタ
+- クラス型のポインタ変数には`派生クラスのアドレスを代入`できる
+```
+Derived_class derived_obj;
+Base_class *base_obj = &derived_obj;
+```
+- ただし, 基底クラスのポインタは基底クラスの情報しか持たない
+  - たとえ, 派生クラスのオブジェクトを指していても派生クラスのメンバは呼び出せない
+- [inheritance4.cpp](./src/inheritance4.cpp)
+  - base_obj->age しようとするとコンパイルエラー
+  
+```cpp
+#include <iostream>
+using namespace std;
+
+class Base{
+public:
+  const char* name;
+};
+
+class Derived : public Base{
+public:
+  int age;
+};
+
+
+int main(){
+  Derived derived_obj;
+  Base *base_obj = &derived_obj;                        // 派生クラスのアドレスを代入
+  
+  derived_obj.name = "野原しんのすけ";
+  derived_obj.age  = 5;
+
+
+  cout << "derived name : " << derived_obj.name << endl;
+  cout << "derived age  : " << derived_obj.age  << endl;
+  cout << "base    name : " << base_obj->name   << endl;
+  //cout << "base    age  : " << base_obj->age    << endl;   // コンパイルエラー
+  
+  return 0;
+}
+
+
+>>> derived name : 野原しんのすけ
+>>> derived age  : 5
+>>> base    name : 野原しんのすけ
+```
+
+
+- この機能により, 同名のメンバを持つクラス間で面白い現象が発生する
+  - 基底クラスと派生クラスでメンバ名が衝突している場合, クラスを明示しなかったときは常に自分のクラスのメンバを優先する
+  - しかし, ポインタが指すオブジェクトは基底クラスの情報しかないので, 基底クラスのメンバを呼び出すという現象が発生する
+- [inheritance5.cpp](./src/inheritance5.cpp)
+
+```cpp
+#include <iostream>
+using namespace std;
+
+class Base{
+public:
+  void print(){
+    cout << "Base だよ" << endl;
+  }
+};
+
+class Derived : public Base{
+public:
+  void print(){
+    cout << "Derived だよ" << endl;
+  }
+};
+
+
+int main(){
+  Derived derived_obj;
+  Base *base_obj = &derived_obj;                        // 派生クラスのアドレスを代入
+  
+  derived_obj.print();
+  base_obj->print();    // 派生クラスのアドレスを与えたけど 基底クラスの方が実行されるよ
+  
+  return 0;
+}
+
+
+>>> Derived だよ
+>>> Base だよ
+```
+
+- これをより発展させると動的なポリモーフィズムが実現できる
+  - ポリモーフィズム(多態性・多様性) : 同じ名前のメソッドを複数のクラスで使用できるようにし, そのメソッドを通して暗黙的に複数のインスタンスの動作を切り替えることをできるようにすること
+  - -> 関数のオーバーライド
 
 
