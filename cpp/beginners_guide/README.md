@@ -166,6 +166,17 @@ class 派生クラス名 : [アクセス指定子] 基本(基底)クラス名 {
 ```
 
 
+## [継承とポインタ](./inheritance/#user-content-継承とポインタ)
+- クラス型のポインタ変数には`派生クラスのアドレスを代入`できる
+```
+Derived-class-name derived_obj;
+Base-class-name *base_obj = &derived_obj;
+```
+- ただし, 基底クラスのポインタは基底クラスの情報しか持たない
+  - たとえ, 派生クラスのオブジェクトを指していても派生クラスのメンバは呼び出せない
+
+
+
 ***
 ## [前方宣言](./forward_declaration)
 - 下記のコード例では, class A の定義の時点で B はまだ定義されていないため, `void getB(B &);` の部分で問題が発生する. 
