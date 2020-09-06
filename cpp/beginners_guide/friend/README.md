@@ -182,7 +182,7 @@ int main() {
 
 ## 演算子のオーバーロード
 演算子のオーバーロードについても, クラスの外に定義を書いて, フレンド関数に登録することで, クラス内のプライベートメンバにアクセスすることが可能.
-([オーバーロード])(https://github.com/imamura-slab/Hoge/tree/234417bf359431a9d52a569e9eb8ac6366e7f101/cpp/beginners_guide/overload))のようにクラス内に書いてもいいし, フレンドを使ってクラス外に書いてもよい.
+overloadの章にあるようにクラス内に書いてもいいし, フレンドを使ってクラス外に書いてもいい.
 
 - 以下のプログラムは, 複素数クラスについて, +演算子と<<演算子をオーバーロードするサンプルプログラム.
 ([overload.cpp](https://github.com/imamura-slab/Hoge/tree/master/cpp/friend/src/overload.cpp)
