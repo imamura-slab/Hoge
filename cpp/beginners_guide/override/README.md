@@ -15,7 +15,7 @@ virtual member-function-declarator
 ```
 
 - [override1.cpp](./src/override1.cpp)
-  - 必ず再定義しなければならないというわけではない(foo). その場合は最後に再定義したクラスのメンバ関数が参照される. 
+  - 必ず再定義しなければならないというわけではない(Fooのように). その場合は最後に再定義したクラスのメンバ関数が参照される. 
 ```cpp
 #include <iostream>
 using namespace std;
@@ -29,19 +29,19 @@ public:
 
 class Fuga : public Hoge{
 public:
-  void print(){
+  void print(){                // 再定義
     cout << "fuga" << endl;
   }
 };
 
 class Piyo : public Fuga{
 public:
-  void print(){
+  void print(){                // 再定義
     cout << "piyo" << endl;
   }
 };
 
-class Foo : public Piyo{
+class Foo : public Piyo{       // 再定義していない
 };
 
 
@@ -96,7 +96,7 @@ int main(){
   - 基底クラス : Hanzawa, 派生クラス : Naoki
   - 派生クラスのインスタンスobjが破壊されると ~Hanzawa() が呼び出され, その中で仮想関数`func()`が呼び出される.
     - 派生クラスのインスタンスが, デストラクタを呼び出しているため, 派生クラスのfunc()が呼び出されることを期待するがそうはならない. 基底クラスのfunc()が呼び出される.
-```
+```cpp
 #include <iostream>
 using namespace std;
 
@@ -131,14 +131,14 @@ int main(){
 
 
 ## 純粋仮想関数
-- 再定義して使用することを前提とした仮想関数(基底クラスで定義しても使わない)の場合は, `純粋仮想関数`として宣言する
+- 再定義して使用することを前提とした仮想関数の場合(基底クラスで定義しても使わない場合)は, `純粋仮想関数`として宣言する
 ```
 virtual type function(arg-list) = 0;
 ```
 - この仮想関数はこのクラスの派生クラスで再定義されることを意味し, このクラスでは一切定義しない. つまり, この関数は`再定義されなければ使えない`.
 - また, 純粋仮想関数を持つクラスを`抽象クラス`と呼ぶ. 抽象クラスは未完成なクラスで, オブジェクトを作ることができない. 
 - [override3.cpp](./src/override3.cpp)
-```
+```cpp
 #include <iostream>
 using namespace std;
 
