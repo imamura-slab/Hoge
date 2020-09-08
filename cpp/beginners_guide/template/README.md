@@ -63,4 +63,38 @@ int main(){
 
 
 ***
-# テンプレートのオーバーライド
+# テンプレートのオーバーロード
+- ほとんどのデータ型に対する処理は同じだが, ある型のときだけ違う処理を行いたいときは`テンプレート関数をオーバーロード`する
+- [template3.cpp](./src/template3.cpp)
+  - 引数がfloat型のときのみ, 最後に 'f' を表示する
+```cpp
+#include <iostream>
+using namespace std;
+
+template <class T> void println(T var){  // テンプレート関数
+  cout << var << endl;
+}
+
+void println(float val){                 // テンプレート関数のオーバーロード (引数がfloat型のとき)
+  cout << val << 'f' << endl;
+}
+
+int main(){
+  float  pi = 3.14;
+  double PI = 3.14;
+
+  println("string");   
+  println(3);          
+  println(pi);        // float
+  println(PI);        // double
+
+  return 0;
+}
+
+
+>>> string
+>>> 3
+>>> 3.14f
+>>> 3.14
+```
+
