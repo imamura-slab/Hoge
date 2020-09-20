@@ -5,6 +5,6 @@
 
 - [github Markdown](./markdown)
 
-
+- openvino の handwritten_japanese_recognition_demo エラー対処 (on Mac)
 
 
