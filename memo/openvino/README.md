@@ -7,15 +7,14 @@ Cannot load library '/opt/intel/openvino_2020.4.287/deployment_tools/inference_e
   Reason: image not found
 ```
 
-
-### 結論
+### エラー対処 結論
 以下のコマンドを実行すれば良い
 ```
 sudo install_name_tool -change @rpath/libinference_engine_lp_transformations.dylib /opt/intel/openvino/deployment_tools/inference_engine/lib/intel64/libinference_engine_lp_transformations.dylib libMKLDNNPlugin.dylib
 ```
 
 
-***
+
 ***
 ***
 ### めもめも
