@@ -13,15 +13,15 @@ def main(dargs):
     wb = xl.load_workbook(input_excel_name)
     ws = wb.copy_worksheet(wb["Sheet1"])
     ws.title = "Sheet2"
-
+    # ws = wb["Sheet1"]
     
     ## DELETE previous keywords
     keyword = ws[dargs["KEYWORD_RANGE"]]
     for i in range(len(keyword)):
         for j in range(len(keyword[i])):
             keyword[i][j].value=""
-    
-    
+
+            
     ## ADD auto filter
     ws.auto_filter.ref = dargs["AUTO_FILTER_RANGE"]
     
@@ -40,11 +40,20 @@ def main(dargs):
     with open(input_csv_name) as f:
         reader = csv.reader(f)
         for r, data in enumerate(reader):
+            print('input ID:', data[0])
             ### ここで学籍番号 or name チェック
-            ## if == :
-            ## keyword_num = np.append(keyword_num, None)
-            ## row++
-
+            student_ID = ws.cell(row+r, 3).value
+            #print('ID:', student_ID)
+            while data[0] != str(student_ID):
+                keyword_num = np.append(keyword_num, None)
+                ws.cell(row+r, 9).value = ""
+                row         = row + 1
+                student_ID  = ws.cell(row+r, 3).value
+                if student_ID is None:
+                    print('ERROR : Not match ID')
+                    exit()
+                        
+                        
             keyword_num = np.append(keyword_num, len(data))
             for index in range(len(data)):
                 # ws.cell(row=row+r, column=col+index).value = data[index]
@@ -83,7 +92,6 @@ def main(dargs):
     row_offset = dargs["KEYWORD_START_ROW_NUM"]
     
     for i, score in enumerate(keyword_num):
-        print("i = ", i)
         if score is None:     # NOT submit
             start = "A" + str(row_offset+i)
             end   = dargs["KEYWORD_END_ROW"] + str(row_offset+i)
@@ -120,13 +128,15 @@ def main(dargs):
 
 if __name__ == '__main__':
     dargs = {
-        "INPUT_EXCEL_NAME"         : "module.xlsx",
-        "OUTPUT_EXCEL_NAME"        : "temp.xlsx",
+        "INPUT_EXCEL_NAME"         : "template.xlsx",
+        "OUTPUT_EXCEL_NAME"        : "output.xlsx",
                                   
-        "INPUT_CSV_NAME"           : "result.txt",
+        "INPUT_CSV_NAME"           : "result.csv",
                                   
-        "AUTO_FILTER_RANGE"        : "A10:DI81",
-        "KEYWORD_RANGE"            : "J11:DI81",
+        # "AUTO_FILTER_RANGE"        : "A10:DI81",
+        # "KEYWORD_RANGE"            : "J11:DI81",
+        "AUTO_FILTER_RANGE"        : "A10:DI17",
+        "KEYWORD_RANGE"            : "J11:DI17",
         
         "KEYWORD_START_ROW_NUM"    : 11,
         "KEYWORD_START_COLUMN_NUM" : 10,

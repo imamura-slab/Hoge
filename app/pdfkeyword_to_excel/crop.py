@@ -1,9 +1,11 @@
 import numpy as np
 import cv2
+import os
 
 
-def main():
-    img = cv2.imread('./temp/aaa.png', 0)
+def crop(num):
+    filename = "./input/input-" + str(num).zfill(6) + ".png"
+    img      = cv2.imread(filename, 0)
 
     ID_img = img[419:472, 588:742]
     h, w   = ID_img.shape
@@ -11,7 +13,8 @@ def main():
     ID_img = cv2.resize(ID_img, (w*ratio, h*ratio))
     threshold = 200
     _, ID_img = cv2.threshold(ID_img, threshold, 255, cv2.THRESH_BINARY)
-    cv2.imwrite('./result/ID.png', ID_img)
+    ID_filename = "./output/ID/" + str(num).zfill(6) + ".png"
+    cv2.imwrite(ID_filename, ID_img)
 
     key_offset_u = 176
     key_offset_v = 543
@@ -44,8 +47,19 @@ def main():
             key_img = cv2.dilate(key_img, (5,5), iterations=1)
             
             index = j+i*6
-            cv2.imwrite('./result/'+str(index)+'.png', key_img)
+            out_filename = "./output/keyword/" + str(num).zfill(6) + str(index).zfill(6) + ".png"
+            cv2.imwrite(out_filename, key_img)
+
     
+
+def main():
+    for i in range(100):
+        filename = "./input/input-" + str(i+1).zfill(6) + ".png"
+        if os.path.exists(filename) is True:
+            print('file', filename, 'exist!')
+            crop(i+1)
+        else:
+            exit()
 
     
 if __name__ == '__main__':
