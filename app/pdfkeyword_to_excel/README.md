@@ -31,6 +31,8 @@ excelに直接入力するのとあまり変わらないかも... ターミナ�
 1. csvファイルの用意
    - `python3 extract_id.py > id.csv`
    - 該当する学生番号が書かれた行に, キーワードをコンマで区切りながら入力していく
+     - 例) 1111111, キーワード1, キーワード2, キーワード3  
+       　　2222222, キーワードa, キーワードb
    - 未提出者の行は学生番号ごと削除する
 1. excel書き込み
    - `python3 make_excel.py`
@@ -47,7 +49,7 @@ excelに直接入力するのとあまり変わらないかも... ターミナ�
 
 
 
-
+***
 ***
 ### 文字認識(OCR : Optical character recognition)
 - Intelの`OpenVINO`(その中のhandwritten_japanese_recognition_demo)を使用
@@ -71,6 +73,9 @@ excelに直接入力するのとあまり変わらないかも... ターミナ�
   - [] 
 
 
+
+### テキストマイニング
+- id.csv を [https://textmining1.userlocal.jp/old/file](https://textmining1.userlocal.jp/old/file) に投げると, キーワードを分析し, ワードクラウドの作成などをしてくれる
 
 
 
