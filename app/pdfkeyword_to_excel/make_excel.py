@@ -3,6 +3,13 @@ import csv
 import numpy as np
 
 
+## flags {
+TOP3 = False
+TOP2 = True
+TOP1 = True
+## flags }
+
+
 def main(dargs):
     input_excel_name  = dargs["INPUT_EXCEL_NAME"]
     output_excel_name = dargs["OUTPUT_EXCEL_NAME"]
@@ -11,28 +18,43 @@ def main(dargs):
     
     ## READ Excel file
     wb = xl.load_workbook(input_excel_name)
-    ws = wb.copy_worksheet(wb["Sheet1"])
-    ws.title = "Sheet2"
-    # ws = wb["Sheet1"]
+    # ws = wb.copy_worksheet(wb["Sheet1"])
+    # ws.title = "Sheet2"
+    ws = wb["Sheet1"]
+
+
+    # wb = xl.load_workbook(input_excel_name)
+    # ws = wb.worksheets[0]
+    # wb.copy_worksheet(ws)
+    
     
     ## DELETE previous keywords
     keyword = ws[dargs["KEYWORD_RANGE"]]
     for i in range(len(keyword)):
         for j in range(len(keyword[i])):
             keyword[i][j].value=""
-
+            
             
     ## ADD auto filter
     ws.auto_filter.ref = dargs["AUTO_FILTER_RANGE"]
-    
 
+    
     ## COPY color of auto filter
     target = ws["B10:DI10"]
     for i in range(len(target)):
         for j in range(len(target[i])):
             target[i][j]._style = ws["A10"]._style
-    
 
+
+    ## 学生番号抜き出し
+    # target = ws["C10:C89"]
+    # for i in range(len(target)):
+    #     for j in range(len(target[i])):
+    #         print(target[i][j].value)
+    # exit()
+
+            
+            
     ## READ keyword from csv file and WRITE
     keyword_num = np.array([], dtype="int8")
     row = dargs["KEYWORD_START_ROW_NUM"]
@@ -55,9 +77,9 @@ def main(dargs):
                         
                         
             keyword_num = np.append(keyword_num, len(data))
-            for index in range(len(data)):
+            for index in range(len(data)-1):
                 # ws.cell(row=row+r, column=col+index).value = data[index]
-                ws.cell(row+r, col+index).value = data[index]
+                ws.cell(row+r, col+index).value = data[index+1]
     
 
     # keyword_num = np.append(keyword_num, None)                
@@ -94,7 +116,7 @@ def main(dargs):
     for i, score in enumerate(keyword_num):
         if score is None:     # NOT submit
             start = "A" + str(row_offset+i)
-            end   = dargs["KEYWORD_END_ROW"] + str(row_offset+i)
+            end   = dargs["KEYWORD_END_COLUMN"] + str(row_offset+i)
             cell  = ws[start:end]
             for i in range(len(cell)):
                 for j in range(len(cell[i])):
@@ -104,7 +126,7 @@ def main(dargs):
                 pass
             else:
                 start = "A" + str(row_offset+i)
-                end   = dargs["KEYWORD_END_ROW"] + str(row_offset+i)
+                end   = dargs["KEYWORD_END_COLUMN"] + str(row_offset+i)
                 cell  = ws[start:end]
                 if score < second:   # 3rd
                     for i in range(len(cell)):
@@ -120,6 +142,32 @@ def main(dargs):
                             cell[i][j].fill = yellow_fill
     ## DRAW TOP3 and NOT submit persons }
         
+
+    
+    ## multi columns to one column {
+    row = dargs["KEYWORD_START_ROW_NUM"]
+    col = dargs["KEYWORD_START_COLUMN_NUM"]
+    count = 0
+    
+    for i in range(104):
+        for j in range(89):
+            if ws.cell(row+i, col+j).value == "":
+                break
+            #ws.cell(100+i*104+j, 3).value = ws.cell(row+i, col+j).value
+            ws.cell(100+count, 3).value = ws.cell(row+i, col+j).value
+            count += 1
+    ## multi columns to one column }
+    
+
+    ## COUNT KEYWORD { ## must CHANGE read mode
+    # for i in range(count):
+    #     target = "=COUNTIF(J11:DI89, C" + str(100+i) + ")"
+    #     ws.cell(100+i, 4).value = target
+    ## COUNT KEYWORD }
+
+    
+
+    
     
     ## WRITE Excel file                
     wb.save(output_excel_name)
@@ -131,17 +179,23 @@ if __name__ == '__main__':
         "INPUT_EXCEL_NAME"         : "template.xlsx",
         "OUTPUT_EXCEL_NAME"        : "output.xlsx",
                                   
-        "INPUT_CSV_NAME"           : "result.csv",
+        #"INPUT_CSV_NAME"           : "result.csv",
+        "INPUT_CSV_NAME"           : "id.csv",
                                   
         # "AUTO_FILTER_RANGE"        : "A10:DI81",
         # "KEYWORD_RANGE"            : "J11:DI81",
-        "AUTO_FILTER_RANGE"        : "A10:DI17",
-        "KEYWORD_RANGE"            : "J11:DI17",
+        "AUTO_FILTER_RANGE"        : "A10:DI89",
+        "KEYWORD_RANGE"            : "J11:DI89",
         
         "KEYWORD_START_ROW_NUM"    : 11,
         "KEYWORD_START_COLUMN_NUM" : 10,
 
-        "KEYWORD_END_ROW"          : "DI",
+        "KEYWORD_START_COLUMN"     : "J",
+        "KEYWORD_END_COLUMN"       : "DI",
+        "KEYWORD_START_ROW"        : 11,
+        "KEYWORD_END_ROW"          : 89,
+
+        "ONE_COLUMN_RANGE"         : "C100:C9356",
     }
     
 
