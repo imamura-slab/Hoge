@@ -1,0 +1,8 @@
+#!/bin/zsh
+
+# python3 /opt/intel/openvino/deployment_tools/open_model_zoo/demos/python_demos/handwritten_japanese_recognition_demo/handwritten_japanese_recognition_demo.py -m ~/model_2020.2/intel/handwritten-japanese-recognition-0001/FP32/handwritten-japanese-recognition-0001.xml -i $1
+
+
+python3 ~/OCR/openvino/handwritten_japanese_recognition_demo.py -m ~/model_2020.2/intel/handwritten-japanese-recognition-0001/FP32/handwritten-japanese-recognition-0001.xml -i $1
+
+
