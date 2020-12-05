@@ -2,7 +2,7 @@ hex_file/*.hex
 output_data/*.hex
 
 output_img/*.png
-img/*.png
+input_img/*.png
 
 .bpad
 output_img/*.png

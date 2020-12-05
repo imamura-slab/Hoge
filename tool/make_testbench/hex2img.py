@@ -1,8 +1,13 @@
 import numpy as np
 import cv2
 
-HEIGHT = 240
-WIDTH  = 320
+
+DISP_SYNC = False # 同期領域を含めた画像にするかどうか
+
+V_DISP = 240
+H_DISP = 320
+HEIGHT = 300
+WIDTH  = 400
 
 path_r = "output_data/data_r.hex"
 path_g = "output_data/data_g.hex"
@@ -19,12 +24,23 @@ def main():
 
 
     frames = int(len(data_r) / (HEIGHT*WIDTH))
+    print('-------------------')
     print(frames, "frames")
-    img = np.zeros((HEIGHT, WIDTH, 3))
+
+    if DISP_SYNC:
+        COL = WIDTH
+        ROW = HEIGHT
+    else:
+        COL = H_DISP
+        ROW = V_DISP
+    
+    img = np.zeros((ROW, COL, 3))
     print(img.shape)
+    print('-------------------')
+    
     for frame in range(frames):
-        for i in range(HEIGHT):
-            for j in range(WIDTH):
+        for i in range(ROW):
+            for j in range(COL):
                 index = frame*HEIGHT*WIDTH + i*WIDTH + j
                 img[i,j,2] = data_r[index]
                 img[i,j,1] = data_g[index]
@@ -32,7 +48,6 @@ def main():
         cv2.imwrite("output_img/" + str(frame).zfill(3) + ".png", img)
             
     
-
 
 if __name__ == '__main__':
     main()
