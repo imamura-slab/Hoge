@@ -266,7 +266,7 @@ endmodule // imgROM
 """.format(self.wordaddr,
            self.bit,
            self.clk,
-           self.height*self.width*self.frames*self.clk + self.clk//2, # self.word*self.clk + self.clk//2,
+           (self.height*self.width*self.frames + self.latency)*self.clk + self.clk//2, # self.word*self.clk + self.clk//2,
            self.word-1,
            self.latency,
            self.v_disp,
