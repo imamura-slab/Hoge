@@ -5,6 +5,8 @@
 
 - [github Markdown](./markdown)
 
-- openvino の handwritten_japanese_recognition_demo エラー対処 (on Mac)
+- [openvino の handwritten_japanese_recognition_demo エラー対処 (on Mac)](./openvino)
+
+- [verilog simulation for mac (Icarus Verilog Compiler)](./icarus)
 
 
