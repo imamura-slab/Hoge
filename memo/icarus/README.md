@@ -21,3 +21,11 @@ end
 ```
 
 
+# コンパイル
+- SystemVerilogの場合 `-g2005-sv` を入れる
+  - 最新のSysyemVerilogに対応していないのか, コンパイルエラーになってしまう記述もある...... 
+```
+$ iverilog -g2005-sv *.sv *.sv *.sv ...
+$ vvp a.out
+```
+
